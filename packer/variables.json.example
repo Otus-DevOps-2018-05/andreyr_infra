@@ -1,11 +1,11 @@
 {
-    "project_id": "infra",
+    "project_id": "infra-207619",
     "source_image_family": "ubuntu-1604-lts",
-    "zone": "europe-west1-c",
+    "zone": "europe-north1-c",
     "image_description ": "Test image for OTUS reddit monolith application",
-    "disk_size": 10,
+    "disk_size": "10",
     "disk_type": "pd-standard",
     "network": "default",
-    "tags": ["packer", "OTUS", "test", "ubuntu"],
+    "tags": "packer,otus,test,ubuntu,full",
     "machine_type": "f1-micro"
 }
