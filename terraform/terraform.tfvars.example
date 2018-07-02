@@ -1,0 +1,5 @@
+project = "infra-xxxxx"
+
+public_key_path = "~/.ssh/xxxxx.pub"
+
+disk_image = "xxxxx-base"
