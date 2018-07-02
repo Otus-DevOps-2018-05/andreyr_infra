@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-User=appuser
+User=bytamine
 WorkingDirectory=/home/bytamine/reddit
-ExecStart=/bin/bash -lc 'puma -d'
+ExecStart=/bin/bash -lc 'puma'
 Restart=always
 
 [Install]
