@@ -24,3 +24,12 @@ variable "zone" {
   description = "Zone"
   default     = "europe-north1-c"
 }
+
+variable "network" {
+  description = "Network"
+  default     = "default"
+}
+
+variable "instance_count" {
+  default = "1"
+}
