@@ -2,6 +2,7 @@
 - [Homework 3: gcloud](#homework-3-gcloud)
 - [Homework 4: Packer](#homework-4-packer)
 - [Homework 5: terraform-1](#homework-5-terraform-1)
+- [Homework 6: terraform-2](#homework-6-terraform-2)
 
 # Homework 3: gcloud
 ## Create instance with startup script
@@ -49,6 +50,20 @@ The main issue I see here is a lot of redundand configuration, while reddit-app-
 - (**) deleted reddit-app-tf-2 and added instance_count variable instead
 - (**) ran ```terraform apply``` with ```instance_count = 3```
 - (**) changed output ```app_external_ip``` to print all external application IPs
+## How to run project
+
+## How to check
+
+# Homework 6: terraform-2
+## What has been done
+- created vpc module and imported in main.tf
+- checked invalid, correct and 0.0.0.0 addresses in vpc module
+- moved main.tf, outputs.tf, terraform.tfvars, variables.tf to stage and prod directories
+- created two buckets
+- (*) created backend.tf for storing tfstate file
+- (*) checked that terraform sees tfstate even if it's removed
+- (*) checked that lockfile doesn't allow to run two ```terraform apply```
+
 ## How to run project
 
 ## How to check
