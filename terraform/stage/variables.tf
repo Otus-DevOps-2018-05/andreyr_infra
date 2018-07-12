@@ -46,4 +46,5 @@ variable "db_disk_image" {
 
 variable "main_mongo_address" {
   description = "Mongo address"
+  default     = "127.0.0.1"
 }
