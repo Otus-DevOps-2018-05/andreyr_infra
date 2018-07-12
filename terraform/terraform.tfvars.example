@@ -1,0 +1,4 @@
+project = "infra-xxxx"
+public_key_path = "~/.ssh/appuser.pub"
+disk_image = "reddit-base"
+main_mongo_address = "127.0.0.1"
