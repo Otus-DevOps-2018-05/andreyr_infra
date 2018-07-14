@@ -3,6 +3,7 @@
 - [Homework 4: Packer](#homework-4-packer)
 - [Homework 5: terraform-1](#homework-5-terraform-1)
 - [Homework 6: terraform-2](#homework-6-terraform-2)
+- [Homework 7: ansible-1](#homework-7-ansible-1)
 
 # Homework 3: gcloud
 ## Create instance with startup script
@@ -63,6 +64,17 @@ The main issue I see here is a lot of redundand configuration, while reddit-app-
 - (*) created backend.tf for storing tfstate file
 - (*) checked that terraform sees tfstate even if it's removed
 - (*) checked that lockfile doesn't allow to run two ```terraform apply```
+
+## How to run project
+
+## How to check
+
+# Homework 7: ansible-1
+## What has been done
+- ```ansible app -m command -a 'rm -rf ~/reddit'```
+- ```ansible-playbook clone.yml``` now has ```changed=1``` state because of missing ~/reddit directory
+- (*) Created inventory.sh, which prints json to stdout and writes same to inventory.json
+- (*) IPs got via ```gcloud compute instances list```
 
 ## How to run project
 
