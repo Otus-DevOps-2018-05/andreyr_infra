@@ -1,12 +1,8 @@
-provider "google" {
-  version = "1.4.0"
-  project = "${var.project}"
-  region  = "${var.region}"
-}
+data "template_file" "puma_service" {
+  template = "${file("${path.module}/files/puma.service")}"
 
-resource "google_compute_project_metadata" "default" {
-  metadata {
-    ssh-keys = "appuser1:${file(var.public_key_path)}appuser2:${file(var.public_key_path)}"
+  vars {
+    mongo_address = "${var.main_mongo_address}"
   }
 }
 
@@ -20,7 +16,7 @@ resource "google_compute_instance" "app" {
   # определение загрузочного диска
   boot_disk {
     initialize_params {
-      image = "${var.disk_image}"
+      image = "${var.app_disk_image}"
     }
   }
 
@@ -30,7 +26,9 @@ resource "google_compute_instance" "app" {
     network = "${var.network}"
 
     # использовать ephemeral IP для доступа из Интернет
-    access_config {}
+    access_config = {
+      nat_ip = "${google_compute_address.app_ip.address}"
+    }
   }
 
   metadata {
@@ -45,12 +43,12 @@ resource "google_compute_instance" "app" {
   }
 
   provisioner "file" {
-    source      = "files/puma.service"
+    source      = "${path.module}/files/puma.service"
     destination = "/tmp/puma.service"
   }
 
   provisioner "remote-exec" {
-    script = "files/deploy.sh"
+    script = "${path.module}/files/deploy.sh"
   }
 }
 
@@ -71,4 +69,8 @@ resource "google_compute_firewall" "firewall_puma" {
 
   # Правило применимо для инстансов с тегом ... 
   target_tags = ["reddit-app"]
+}
+
+resource "google_compute_address" "app_ip" {
+  name = "reddit-app-ip"
 }
