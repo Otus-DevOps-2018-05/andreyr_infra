@@ -1,18 +1,18 @@
-# Выполнено ДЗ №
+# Hometask #
 
- - [ ] Основное ДЗ
- - [ ] Задание со *
+ - [x] Main hometask
+ - [x] Hometask with stars
 
-## В процессе сделано:
- - Пункт 1
- - Пункт 2
+## What has been done:
+ - Item 1
+ - Item 2
 
-## Как запустить проект:
- - Например, запустить команду X в директории Y
+## How to run project:
+ - run ```command``` for example
 
-## Как проверить работоспособность:
- - Например, перейти по ссылке http://localhost:8080
+## How to check:
+ - Go to http://localhost:8080
 
 ## PR checklist
- - [ ] Выставил label с номером домашнего задания
- - [ ] Выставил label с темой домашнего задания
+ - [x] Label with hometask number
+ - [x] Label with hometask topic
