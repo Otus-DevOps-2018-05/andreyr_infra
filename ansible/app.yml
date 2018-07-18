@@ -1,8 +1,8 @@
 ---
 - name: Configure app
-  hosts: app
+  hosts: reddit-app-tf-0
   vars:
-    db_host: 10.166.0.2
+    db_host: "{{ hostvars['reddit-db-tf-0']['ansible_default_ipv4']['address'] }}"
   become: true
   tasks:
     - name: Add unit file for Puma

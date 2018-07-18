@@ -1,10 +1,10 @@
 ---
 - name: Configure database
-  hosts: db
+  hosts: reddit-db-tf-0
   vars:
     mongo_bind_ip: 0.0.0.0
   become: true
-  tags: db-tag
+  tags: tag_db
   tasks:
     - name: Change mongo config file
       template:
@@ -18,11 +18,11 @@
     service: name=mongod state=restarted
 
 - name: Configure app
-  hosts: app
+  hosts: reddit-app-tf-0
   vars:
-    db_host: 10.166.0.2
+    db_host: "{{ hostvars['reddit-db-tf-0']['ansible_default_ipv4']['address'] }}"
   become: true
-  tags: app-tag
+  tags: tag_app
   tasks:
     - name: Add unit file for Puma
       copy:
@@ -45,9 +45,9 @@
     systemd: name=puma state=reloaded daemon_reload=yes
 
 - name: Deploy app
-  hosts: app
+  hosts: reddit-app-tf-0
   become: true
-  tags: deploy-tag
+  tags: tag_deploy
   tasks:
     - name: Fetch the latest version of application code
       git:
