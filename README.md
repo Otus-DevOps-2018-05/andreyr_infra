@@ -4,6 +4,7 @@
 - [Homework 5: terraform-1](#homework-5-terraform-1)
 - [Homework 6: terraform-2](#homework-6-terraform-2)
 - [Homework 7: ansible-1](#homework-7-ansible-1)
+- [Homework 8: ansible-2](#homework-8-ansible-2)
 
 # Homework 3: gcloud
 ## Create instance with startup script
@@ -46,7 +47,7 @@ gcloud compute firewall-rules create default-puma-server \
 - (*) run ```terraform apply```, appuser_web disappeared from project keys
 - (**) created ```lb.tf```, applied and checked that application is accessible by load balancer IP address
 - (**) added lb_external_ip to output
-- (**) added reddit-app-tf-2 to main.tf, checked availability via loadbalancer - OK  
+- (**) added reddit-app-tf-2 to main.tf, checked availability via loadbalancer - OK
 The main issue I see here is a lot of redundand configuration, while reddit-app-tf-2 is a twin of reddit-app-tf-1.
 - (**) deleted reddit-app-tf-2 and added instance_count variable instead
 - (**) ran ```terraform apply``` with ```instance_count = 3```
@@ -75,6 +76,22 @@ The main issue I see here is a lot of redundand configuration, while reddit-app-
 - ```ansible-playbook clone.yml``` now has ```changed=1``` state because of missing ~/reddit directory
 - (*) Created inventory.sh, which prints json to stdout and writes same to inventory.json
 - (*) IPs got via ```gcloud compute instances list```
+
+## How to run project
+
+## How to check
+
+# Homework 8: ansible-2
+## What has been done
+- one playbook, one play scenario
+- one playbook, multiple plays scenario
+- many playbooks scenario
+- (*) reddit_app_multiple_plays_dynamic.yml which works with gce.py, got DB internal IP via ```{{ hostvars['reddit-db-tf-0']['ansible_default_ipv4']['address'] }}```
+- rebuilt reddit-app-base and reddit-db-base with ansible playbooks
+- created stage environment via terraform
+- run ```ansible-playbook -i gce.py reddit_app_multiple_plays_dynamic.yml```
+- checked that reddit app is running and using mongo
+
 
 ## How to run project
 

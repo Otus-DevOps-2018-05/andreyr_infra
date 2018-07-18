@@ -1,0 +1,25 @@
+---
+- name: Configure app
+  hosts: reddit-app-tf-0
+  vars:
+    db_host: "{{ hostvars['reddit-db-tf-0']['ansible_default_ipv4']['address'] }}"
+  become: true
+  tasks:
+    - name: Add unit file for Puma
+      copy:
+        src: files/puma.service
+        dest: /etc/systemd/system/puma.service
+
+    - name: Add config for DB connection
+      template:
+        src: templates/db_config.j2
+        dest: /home/appuser/db_config
+        owner: appuser
+        group: appuser
+
+    - name: enable puma
+      systemd: name=puma enabled=yes
+
+  handlers:
+  - name: reload puma
+    systemd: name=puma state=restarted daemon_reload=yes
