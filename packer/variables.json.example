@@ -1,5 +1,5 @@
 {
-    "project_id": "infra-207619",
+    "project_id": "infra-xxxxx",
     "source_image_family": "ubuntu-1604-lts",
     "zone": "europe-north1-c",
     "image_description ": "Test image for OTUS reddit monolith application",
