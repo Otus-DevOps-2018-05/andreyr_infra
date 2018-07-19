@@ -1,10 +1,10 @@
-resource "google_compute_firewall" "firewall_ssh" {
-  name    = "default-allow-ssh"
+resource "google_compute_firewall" "firewall_web" {
+  name    = "default-allow-web"
   network = "default"
 
   allow {
     protocol = "tcp"
-    ports    = ["22"]
+    ports    = ["80"]
   }
 
   source_ranges = "${var.source_ranges}"
