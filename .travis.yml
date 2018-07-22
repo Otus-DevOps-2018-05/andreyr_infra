@@ -13,7 +13,7 @@ install:
 script:
 - find packer -name "*.json" | xargs -n1 packer validate -var-file=packer/variables.json.example
 - for tfstage in stage prod; do pushd terraform/${tfstage} && terraform init -backend=false && tflint --var-file=terraform.tfvars.example && terraform validate -var-file=terraform.tfvars.example; popd; done
-- pushd ansible && ansible-lint -x ANSIBLE0011 -v playbooks/*.yml && popd
+- pushd ansible && ansible-lint -v playbooks/*.yml --exclude=roles/jdauphant.nginx; popd
 notifications:
   slack:
     rooms:

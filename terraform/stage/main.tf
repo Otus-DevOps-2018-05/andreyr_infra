@@ -19,7 +19,10 @@ module "app" {
   main_mongo_address = "${module.db.db_internal_ip}"
 }
 
+/*
 module "vpc" {
   source        = "../modules/vpc"
   source_ranges = ["0.0.0.0/0"]
 }
+*/
+
