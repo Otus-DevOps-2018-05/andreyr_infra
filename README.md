@@ -8,6 +8,7 @@
 - [Homework 7: ansible-1](#homework-7-ansible-1)
 - [Homework 8: ansible-2](#homework-8-ansible-2)
 - [Homework 9: ansible-3](#homework-9-ansible-3)
+- [Homework 10: ansible-4](#homework-10-ansible-4)
 
 # Homework 3: gcloud
 ## Create instance with startup script
@@ -111,6 +112,20 @@ The main issue I see here is a lot of redundand configuration, while reddit-app-
 - (*) set up dynamic stage and prod environments
 - (*) commands are ```ansible-playbook -i environments/prod playbooks/site.yml``` and ```ansible-playbook -i environments/stage playbooks/site.yml```
 - (**) changed .travis.yml to check packer, terraform, ansible and put fancy Travis picture to the head of this document
+
+## How to run project
+
+## How to check
+
+
+# Homework 10: ansible-4
+## What has been done
+- created vagrant configuration which uses ansible to provision two virtualbox vms
+- checked that reddit app is available at http://10.10.10.20:9292/
+- (*) copied ```nginx_sites``` section from terraform group_vars to app/vars/main.yml
+- added test ```test_mongo_is_running_on_27017```
+- used roles app and db in packer playbooks
+- fixed packer json files with correct provisioners
 
 ## How to run project
 
