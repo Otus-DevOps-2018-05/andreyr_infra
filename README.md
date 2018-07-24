@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Otus-DevOps-2018-05/andreyr_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2018-05/andreyr_infra)
+
 # Table of content
 - [Homework 3: gcloud](#homework-3-gcloud)
 - [Homework 4: Packer](#homework-4-packer)
@@ -5,6 +7,7 @@
 - [Homework 6: terraform-2](#homework-6-terraform-2)
 - [Homework 7: ansible-1](#homework-7-ansible-1)
 - [Homework 8: ansible-2](#homework-8-ansible-2)
+- [Homework 9: ansible-3](#homework-9-ansible-3)
 
 # Homework 3: gcloud
 ## Create instance with startup script
@@ -92,6 +95,22 @@ The main issue I see here is a lot of redundand configuration, while reddit-app-
 - run ```ansible-playbook -i gce.py reddit_app_multiple_plays_dynamic.yml```
 - checked that reddit app is running and using mongo
 
+
+## How to run project
+
+## How to check
+
+
+# Homework 9: ansible-3
+## What has been done
+- moved playbooks to separate roles
+- created two environments
+- used nginx community-role to proxy reddit app
+- created credentials.yml files and encrypted with ansible-vault
+- checked that users are exist on the servers
+- (*) set up dynamic stage and prod environments
+- (*) commands are ```ansible-playbook -i environments/prod playbooks/site.yml``` and ```ansible-playbook -i environments/stage playbooks/site.yml```
+- (**) changed .travis.yml to check packer, terraform, ansible and put fancy Travis picture to the head of this document
 
 ## How to run project
 
